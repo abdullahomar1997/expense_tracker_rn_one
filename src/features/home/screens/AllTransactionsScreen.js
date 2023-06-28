@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import {FlatList,View,Alert,TouchableOpacity} from 'react-native';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Loading from '../components/Loading';
-import { primaryColor } from '../utils/GlobalStyle';
-import ExportToExcel from '../utils/ExportToExcel';
-import TransactionModal from '../components/TransactionModal';
-import DateTypeSelection from '../components/DateTypeSelection';
-import { ApplicationContext } from '../services/application.context';
+import Loading from '../../../components/Loading';
+import { primaryColor } from '../../../utils/GlobalStyle';
+import ExportToExcel from '../../../utils/ExportToExcel';
+import TransactionModal from '../../../components/TransactionModal';
+import DateTypeSelection from '../../../components/DateTypeSelection';
+import { ApplicationContext } from '../../../services/application.context';
 import styled from 'styled-components/native';
-import Footer from '../features/home/components/Footer';
-import TransactionCard from '../features/home/components/TransactionCard';
-import { TransactionContext } from '../services/transaction.context';
+import Footer from '../components/Footer';
+import TransactionCard from '../components/TransactionCard';
+import { TransactionContext } from '../../../services/transaction.context';
 
 const AllTransactionsScreen = ({route,navigation}) => {
 

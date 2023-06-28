@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AddTransactionScreen from '../screens/AddTransactionScreen';
+import AddTransactionScreen from '../features/home/screens/AddTransactionScreen';
 import DrawerIcon from '../components/NavigationDrawerToggle ';
-import AllTransactionsScreen from '../screens/AllTransactionsScreen';
+import AllTransactionsScreen from '../features/home/screens/AllTransactionsScreen';
 import { ApplicationContext } from '../services/application.context';
 
 const Stack = createNativeStackNavigator();

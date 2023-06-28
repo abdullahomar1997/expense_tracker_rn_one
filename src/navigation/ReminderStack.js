@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DrawerIcon from '../components/NavigationDrawerToggle ';
 import ReminderScreen from '../screens/ReminderScreen';
-import AddTransactionScreen from '../screens/AddTransactionScreen';
+import AddTransactionScreen from '../features/home/screens/AddTransactionScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { primaryColor } from '../utils/GlobalStyle';
 import { ApplicationContext } from '../services/application.context';

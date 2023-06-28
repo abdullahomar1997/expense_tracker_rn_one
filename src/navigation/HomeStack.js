@@ -1,9 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../features/home/screens/HomeScreen';
-import AddTransactionScreen from '../screens/AddTransactionScreen';
+import AddTransactionScreen from '../features/home/screens/AddTransactionScreen';
 import NavigationDrawerToggle  from '../components/NavigationDrawerToggle ';
-import AllTransactionsScreen from '../screens/AllTransactionsScreen';
+import AllTransactionsScreen from '../features/home/screens/AllTransactionsScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 
 const Stack = createNativeStackNavigator();

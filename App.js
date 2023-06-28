@@ -4,6 +4,7 @@ import FontLoader from './src/utils/FontLoader';
 import AuthenticationContextProvider from './src/services/authentication.context';
 import ApplicationContextProvider from './src/services/application.context';
 import TransactionContextProvider, { TransactionContext } from './src/services/transaction.context';
+import AddTransactionContextProvider, { AddTransactionContext } from './src/services/addTransaction.context';
 
 export default function App() {
     return (
@@ -11,7 +12,9 @@ export default function App() {
             <AuthenticationContextProvider>
                 <ApplicationContextProvider>
                     <TransactionContextProvider>
-                        <Index />
+                        <AddTransactionContextProvider>
+                            <Index />
+                        </AddTransactionContextProvider>
                     </TransactionContextProvider>
                 </ApplicationContextProvider>
             </AuthenticationContextProvider>
