@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { RefreshControl, FlatList, TouchableOpacity, Text, View} from 'react-native';
-import { useDeviceOrientation } from '@react-native-community/hooks';
+import { RefreshControl, FlatList, TouchableOpacity, Text} from 'react-native';
 import { Button } from 'react-native-paper';
 import DateTypeSelection from '../../../components/DateTypeSelection';
 import { getAllTransactions,netExpense,dateFilterHelper} from '../../../utils/HelperFunctions';
 import Card from '../components/Card';
-import PieChart from '../../../components/PieChart';
 import { primaryColor } from '../../../utils/GlobalStyle';
 import { ApplicationContext } from '../../../services/application.context';
 import { styled } from 'styled-components';
@@ -33,7 +31,6 @@ const HomeScreen = ({ navigation }) => {
 
     const handleDateFilter = (type, value) => {
         if (allCategories === null) {
-            console.log("hghvhvhvhv")
             setCategories(null);
             return;
         }
@@ -48,23 +45,6 @@ const HomeScreen = ({ navigation }) => {
         setTotal(total);
     };
 
-    const handleCategoryPress = value => {
-        let category = [value];
-        let transactions = getAllTransactions(category);
-        navigation.navigate('AllTransactionsScreen', {
-            transactions: transactions,
-        });
-    };
-
-    const handleButtonPress = () => {
-        navigation.navigate('AddTransactionScreen', {
-            name: 'Add Transaction',
-            showFutureDates: false,
-        });
-    };
-
-    console.log(allCategories);
-
     return (
         <Container>
             <DateContainer>
@@ -75,7 +55,11 @@ const HomeScreen = ({ navigation }) => {
                     <PieC>
                         <PieChartExample />
                     </PieC>
-                    <Button icon="plus-thick" color={primaryColor} mode="contained" style={{ width: '90%', padding: 2 }} onPress={handleButtonPress}>
+                    <Button icon="plus-thick" color={primaryColor} mode="contained" style={{ width: '90%', padding: 2 }} onPress={() => navigation.navigate('AddTransactionScreen', {
+                            name: 'Add Transaction',
+                            showFutureDates: false,
+                        })
+                    }>
                         <Text> Add Transaction</Text>
                     </Button>
                 </ChartAndButton>
@@ -90,7 +74,9 @@ const HomeScreen = ({ navigation }) => {
                         />
                     }
                     renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => handleCategoryPress(item)}>
+                        <TouchableOpacity onPress={() => navigation.navigate('AllTransactionsScreen', {
+                            transactions: getAllTransactions([item]),
+                        })}>
                             <Card item={item} />
                         </TouchableOpacity>
                     )}

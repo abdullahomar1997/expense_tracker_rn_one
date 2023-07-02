@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, View, TextInput } from 'react-native';
 import { Button } from 'react-native-paper';
-import { windowWidth } from '../utils/Dimentions';
-import { primaryColor, textColor } from '../utils/GlobalStyle';
+import { windowWidth } from '../../../utils/Dimentions';
+import { primaryColor, textColor } from '../../../utils/GlobalStyle';
 
 const CategoryModal = ({
     payload,
