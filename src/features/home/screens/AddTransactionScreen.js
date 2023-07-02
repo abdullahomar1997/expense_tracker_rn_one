@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FlatList, View } from 'react-native';
-import DatePicker from '../../../components/DatePicker';
+import DatePicker from '../components/DatePicker';
 import Loading from '../../../components/Loading';
 import {globalStyle,primaryColor,secondaryColor,textColor} from '../../../utils/GlobalStyle';
 import { ApplicationContext } from '../../../services/application.context';

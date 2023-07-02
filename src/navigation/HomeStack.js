@@ -4,7 +4,7 @@ import HomeScreen from '../features/home/screens/HomeScreen';
 import AddTransactionScreen from '../features/home/screens/AddTransactionScreen';
 import NavigationDrawerToggle  from '../components/NavigationDrawerToggle ';
 import AllTransactionsScreen from '../features/home/screens/AllTransactionsScreen';
-import CategoryScreen from '../screens/CategoryScreen';
+import CategoryScreen from '../features/category/screens/CategoryScreen';
 
 const Stack = createNativeStackNavigator();
 

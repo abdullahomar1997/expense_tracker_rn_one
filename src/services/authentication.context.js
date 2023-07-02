@@ -1,9 +1,10 @@
-import React, { Children, createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { getData, removeData, storeData } from '../utils/LocalStorage';
 
 export const AuthenticationContext = createContext();
 
 const AuthenticationContextProvider = ({ children }) => {
+    
     const initialState = {
         firstName: '',
         lastName: '',

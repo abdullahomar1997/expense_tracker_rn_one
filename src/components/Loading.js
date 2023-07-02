@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { primaryColor } from '../utils/GlobalStyle';
 import { styled } from 'styled-components';
 
@@ -11,12 +11,10 @@ export const LoadingContainer = styled.View`
 
 const Loading = ({ message }) => {
     return (
-        <View>
+        <LoadingContainer>
             <ActivityIndicator size="large" color={primaryColor} />
-            {message !== undefined && (
-                <Text style={{ color: '#A5A5A5' }}>{message}</Text>
-            )}
-        </View>
+            {message && <Text style={{ color: '#A5A5A5' }}>{message}</Text>}
+        </LoadingContainer>
     );
 };
 

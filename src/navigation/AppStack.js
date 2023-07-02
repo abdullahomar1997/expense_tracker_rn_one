@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CategoryScreen from '../screens/CategoryScreen';
-import ChartScreen from '../screens/ChartScreen';
+import CategoryScreen from '../features/category/screens/CategoryScreen';
+import ChartScreen from '../features/chart/screens/ChartScreen';
 import HomeStack from './HomeStack';
 import ReminderStack from './ReminderStack';
 import TransactionStack from './TransactionStack';

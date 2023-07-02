@@ -1,7 +1,10 @@
 import React from 'react'
+import { Text } from 'react-native';
 import { styled } from 'styled-components';
+import { textColor } from '../../../utils/GlobalStyle';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CategoriesCard = ({item}) => {
+const CategoriesCard = ({item,handleUpdate,handleDelete}) => {
     return (
         <Card>
             <Container2>
@@ -39,7 +42,7 @@ const Color = styled.View`
   width: 15px;
   height: 15px;
   border-radius: 7.5px;
-  background-color: ${props => props.textColor}
+  background-color: ${props => props.color};
 `;
 
 const IconsContainer = styled.View`

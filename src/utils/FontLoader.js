@@ -1,28 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { useFonts } from 'expo-font';
+import Loading from '../components/Loading';
 
 const FontLoader = ({ children }) => {
     const [fontsLoaded] = useFonts({
         'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
         'Kufam-SemiBoldItalic': require('../assets/fonts/Kufam-SemiBoldItalic.ttf'),
     });
-
-    if (!fontsLoaded) {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <Text>Loading fonts...</Text>
-            </View>
-        );
-    }
-
-    return children;
+    
+    return !fontsLoaded ? <Loading message={"Loading fonts..."} /> : children;
 };
 
 export default FontLoader;

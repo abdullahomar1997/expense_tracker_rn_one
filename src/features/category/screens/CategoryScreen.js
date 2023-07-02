@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { Button } from 'react-native-paper';
-import CategoryModal from '../features/category/components/CategoryModal';
-import Loading, { LoadingContainer } from '../components/Loading';
-import { windowWidth } from '../utils/Dimentions';
-import { globalStyle, primaryColor } from '../utils/GlobalStyle';
-import { textColor } from '../utils/GlobalStyle';
+import CategoryModal from '../components/CategoryModal';
+import Loading, { LoadingContainer } from '../../../components/Loading';
+import { windowWidth } from '../../../utils/Dimentions';
+import { globalStyle, primaryColor } from '../../../utils/GlobalStyle';
+import { textColor } from '../../../utils/GlobalStyle';
 import styled from 'styled-components/native';
-import { CategoryContext } from '../services/category.context';
-import CategoriesCard from '../features/category/components/CategoriesCard';
+import { CategoryContext } from '../../../services/category.context';
+import CategoriesCard from '../components/CategoriesCard';
 
 const CategoryScreen = () => {
 
-    const { data,isLoading,modalVisible,payload,isUpdate,handleSubmit,handleChange,handleModalVisibility,handleAdd,errMsg} = useContext(CategoryContext);
+    const { data,isLoading,modalVisible,payload,isUpdate,handleSubmit,handleChange,setErrMsg,handleAdd,errMsg,handleDelete,handleUpdate,handleSearch,handleModalVisibility} = useContext(CategoryContext);
 
     return (
         <>
@@ -33,7 +33,12 @@ const CategoryScreen = () => {
                             {errMsg.trim().length !== 0 && (
                                 <Text style={globalStyle.error} onPress={() => setErrMsg('')}>{errMsg}</Text>
                             )}
-                            <FlatList style={{ marginTop: 5 }} data={data} keyExtractor={item => item.id} renderItem={CategoriesCard}/>
+                            <FlatList
+                                style={{ marginTop: 5 }}
+                                data={data}
+                                keyExtractor={item => item.id} 
+                                renderItem={({ item, index }) => ( <CategoriesCard item={item} handleDelete={handleDelete} handleUpdate={handleUpdate}/>)}
+                            />
                         </View>
                     )}
                 </>

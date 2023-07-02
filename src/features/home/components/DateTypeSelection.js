@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import moment from 'moment';
 import DatePicker from './DatePicker';
 import MonthYearPicker from './MonthYearPicker';
-import { primaryColor, textColor } from '../utils/GlobalStyle';
+import { primaryColor, textColor } from '../../../utils/GlobalStyle';
 
 const DateTypeSelection = ({ date, sendDateToHome }) => {
     const options = ['Day', 'Month', 'Year'];

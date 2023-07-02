@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { getAllTransactions } from '../utils/HelperFunctions';
 
 export const ApplicationContext = createContext();
 
@@ -75,7 +76,11 @@ const ApplicationContextProvider = ({ children }) => {
             },
             // more category objects...
           ]
-          
+
+          let tempTransactions = getAllTransactions(data); 
+
+          console.log(tempTransactions);
+          setTransactions(tempTransactions);
 
         // let data = eliminateReminders(allData);
         // data = calculateTotalExpense(data);
@@ -176,7 +181,8 @@ const ApplicationContextProvider = ({ children }) => {
                 updateCategory,
                 addCategory,
                 reminders,
-                fetchAllCategories
+                fetchAllCategories,
+                transactions
             }}
         >
             {children}

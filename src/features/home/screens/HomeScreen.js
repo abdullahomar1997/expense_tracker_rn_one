@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { RefreshControl, FlatList, TouchableOpacity, Text} from 'react-native';
 import { Button } from 'react-native-paper';
-import DateTypeSelection from '../../../components/DateTypeSelection';
+import DateTypeSelection from '../components/DateTypeSelection';
 import { getAllTransactions,netExpense,dateFilterHelper} from '../../../utils/HelperFunctions';
 import Card from '../components/Card';
 import { primaryColor } from '../../../utils/GlobalStyle';
 import { ApplicationContext } from '../../../services/application.context';
 import { styled } from 'styled-components';
-import PieChartExample from '../../../components/PieChartExample';
+import PieChartExample from '../components/PieChartExample';
 
 const HomeScreen = ({ navigation }) => {
 

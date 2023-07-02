@@ -3,14 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useDeviceOrientation } from '@react-native-community/hooks';
 import { BarChart, LineChart } from 'react-native-chart-kit';
 import { Picker } from '@react-native-picker/picker';
-import Loading from '../components/Loading';
-import { windowWidth, windowHeight } from '../utils/Dimentions';
-import {
-    lastNMonthsExpenses,
-    monthlyExpensesOfLastYear,
-} from '../utils/HelperFunctions';
-import { textColor } from '../utils/GlobalStyle';
-import { ApplicationContext } from '../services/application.context';
+import Loading, { LoadingContainer } from '../../../components/Loading';
+import { windowWidth, windowHeight } from '../../../utils/Dimentions';
+import {lastNMonthsExpenses,monthlyExpensesOfLastYear} from '../../../utils/HelperFunctions';
+import { textColor } from '../../../utils/GlobalStyle';
+import { ApplicationContext } from '../../../services/application.context';
+import styled from 'styled-components/native';
+
 
 const chartConfig = {
     backgroundGradientFrom: '#1E2923',
@@ -65,15 +64,9 @@ const ChartScreen = () => {
 
     if (months.length < 1) {
         return (
-            <View
-                style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
+            <LoadingContainer>
                 <Loading />
-            </View>
+            </LoadingContainer>
         );
     }
 
@@ -81,34 +74,14 @@ const ChartScreen = () => {
         <>
             {!landscape && (
                 <>
-                    <View style={styles.header}>
-                        <TouchableOpacity
-                            style={[styles.buttons, styles.buttonDivider]}
-                            onPress={() => setIsBarChart(false)}
-                        >
-                            <Text
-                                style={[
-                                    styles.headerText,
-                                    !isBarChart && styles.active,
-                                ]}
-                            >
-                                Line Chart
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.buttons}
-                            onPress={() => setIsBarChart(true)}
-                        >
-                            <Text
-                                style={[
-                                    styles.headerText,
-                                    isBarChart && styles.active,
-                                ]}
-                            >
-                                Bar Chart
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    <Header>
+                        <Buttons onPress={() => setIsBarChart(false)}>
+                            <HeaderText textColor={textColor}>Line Chart</HeaderText>
+                        </Buttons>
+                        <Buttons onPress={() => setIsBarChart(true)}>
+                            <HeaderText textColor={textColor} >Bar Chart</HeaderText>
+                        </Buttons>
+                    </Header>
                     <Picker
                         dropdownIconColor={textColor}
                         style={{ color: textColor }}
@@ -159,31 +132,24 @@ const ChartScreen = () => {
 
 export default ChartScreen;
 
-const styles = StyleSheet.create({
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#D3D3D3',
-        borderBottomWidth: 1,
-        borderBottomColor: '#D3D3D3',
-        backgroundColor: '#fff',
-    },
-    buttons: {
-        paddingVertical: 15,
-        width: '50%',
-    },
-    buttonDivider: {
-        borderRightWidth: 1,
-        borderRightColor: '#D3D3D3',
-    },
-    headerText: {
-        fontSize: 15,
-        color: textColor,
-        textAlign: 'center',
-    },
-    active: {
-        fontWeight: 'bold',
-    },
-});
+const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-bottom-width: 1px;
+  border-bottom-color: #D3D3D3;
+  background-color: #fff;
+`;
+
+const Buttons = styled.TouchableOpacity`
+  padding-vertical: 15px;
+  width: 50%;
+`;
+
+const HeaderText = styled.Text`
+  font-size: 15px;
+  color: ${props => props.textColor};
+  text-align: center;
+`;

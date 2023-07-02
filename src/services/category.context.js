@@ -1,5 +1,5 @@
-import React, { Children, createContext, useEffect, useState } from 'react';
-import { getData, removeData, storeData } from '../utils/LocalStorage';
+import React, { Children, createContext, useContext, useEffect, useState } from 'react';
+import { ApplicationContext } from './application.context';
 
 export const CategoryContext = createContext();
 
@@ -105,12 +105,20 @@ const CategoryContextProvider = ({ children }) => {
     return (
         <CategoryContext.Provider
             value={{
-                token,
-                onRegister,
-                onLogin,
+                data,
                 isLoading,
-                handleToken,
+                modalVisible,
+                payload,
+                isUpdate,
+                handleSubmit,
+                handleChange,
+                setErrMsg,
+                handleAdd,
                 errMsg,
+                handleDelete,
+                handleUpdate,
+                handleSearch,
+                handleModalVisibility
             }}
         >
             {children}

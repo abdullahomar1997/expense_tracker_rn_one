@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Pie from 'react-native-pie';
-import { textColor } from '../utils/GlobalStyle';
+import { textColor } from '../../../utils/GlobalStyle';
 
 const PieChart = ({ categories, total }) => {
     const rupeesSymbol = '\u20B9';
